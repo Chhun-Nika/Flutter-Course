@@ -11,11 +11,6 @@ void main() {
             style: TextStyle(color: Colors.orange, fontSize: 50),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.amber,
-          // child: Text('hello'),
-          child: const Center(child: Text('Hello'),),
-        ),
       ),
     ),
     
