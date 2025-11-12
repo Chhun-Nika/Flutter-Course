@@ -11,7 +11,7 @@ void main() {
           child: Padding(
             padding: EdgeInsets.all(40),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 // before widget is created
