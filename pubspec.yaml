@@ -67,6 +67,7 @@ flutter:
     - assets/ex4/sunny.png
     - assets/ex4/sunnyCloudy.png
     - assets/ex4/veryCloudy.png
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
