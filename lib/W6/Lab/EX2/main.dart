@@ -15,11 +15,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue,
         ),
         body: Column(
-          children: [
-            FavoriteCard(), 
-            FavoriteCard(), 
-            FavoriteCard()
-          ],
+          children: [FavoriteCard(), FavoriteCard(), FavoriteCard()],
         ),
       ),
     );
@@ -35,6 +31,10 @@ class FavoriteCard extends StatefulWidget {
 
 class _FavoriteCardState extends State<FavoriteCard> {
   bool isFavorite = false;
+
+  IconData get iconButton =>
+      isFavorite ? Icons.favorite : Icons.favorite_border;
+  Color get buttonColor => isFavorite ? Colors.red : Colors.grey;
 
   void onClick() {
     setState(() {
@@ -52,25 +52,27 @@ class _FavoriteCardState extends State<FavoriteCard> {
       child: Row(
         children: [
           Expanded(
+            flex: 7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 10,
               children: [
                 const Text(
                   "title",
                   style: TextStyle(
                     color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
+                SizedBox(height: 10.0),
                 const Text("Description"),
               ],
             ),
           ),
           IconButton(
             onPressed: onClick,
-            icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-            color: isFavorite ? Colors.red : Colors.grey,
+            // icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+            icon: Icon(iconButton),
+            color: buttonColor,
           ),
         ],
       ),

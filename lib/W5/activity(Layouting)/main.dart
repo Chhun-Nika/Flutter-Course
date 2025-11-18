@@ -11,7 +11,7 @@ void main() {
               const SizedBox(height: 100),
               Container(height: 400, color: Colors.blue),
 
-              Container(
+              SizedBox(
                 height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,7 +22,7 @@ void main() {
                 ),
               ),
 
-              Container(
+              SizedBox(
                 height: 100,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
