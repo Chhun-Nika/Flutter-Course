@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
           decoration: BoxDecoration(color: Color(0xFF9DD635)),
           child: ListView(
             children: [
-              ScoreCard(course: "Flutter", initialScore: 1),
-              ScoreCard(course: "Dart", initialScore: 5),
-              ScoreCard(course: "React"),
+              ScoreCard(course: "Flutter", child: ScoreManagement(initialScore: 3),),
+              ScoreCard(course: "Dart", child: ScoreManagement(initialScore: 4),),
+              ScoreCard(course: "React", child: ScoreManagement(),),
             ],
           ),
         ),
@@ -28,9 +28,10 @@ class MyApp extends StatelessWidget {
 
 class ScoreCard extends StatelessWidget {
   final String course;
-  final int initialScore;
+  final Widget child;
+  // final int initialScore;
 
-  const ScoreCard({super.key, required this.course, this.initialScore = 0});
+  const ScoreCard({super.key, required this.course, required this.child});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +52,8 @@ class ScoreCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          ScoreManagement(initialScore: initialScore),
+          child
+          // ScoreManagement(initialScore: initialScore),
         ],
       ),
     );
@@ -59,7 +61,7 @@ class ScoreCard extends StatelessWidget {
 }
 
 class ScoreManagement extends StatefulWidget {
-  const ScoreManagement({super.key, required this.initialScore});
+  const ScoreManagement({super.key, this.initialScore = 1});
   final int initialScore;
 
   @override
@@ -97,7 +99,7 @@ class _ScoreManagementState extends State<ScoreManagement> {
 
   void deductScore() {
     setState(() {
-      if (currentScore > 0) {
+      if (currentScore > 1) {
         currentScore--;
       }
     });
@@ -111,7 +113,7 @@ class _ScoreManagementState extends State<ScoreManagement> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: currentScore > 0 ? deductScore : null,
+              onPressed: currentScore > 1 ? deductScore : null,
               icon: Icon(Icons.remove),
             ),
             IconButton(onPressed: currentScore < 10 ? addScore : null, icon: Icon(Icons.add)),
