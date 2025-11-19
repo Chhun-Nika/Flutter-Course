@@ -140,7 +140,7 @@ class _SeasonsCardState extends State<SeasonsCard> {
               child: Image.asset(currentImg, height: 350, fit: BoxFit.cover),
             ),
           ),
-          Padding(padding: EdgeInsets.all(20), child: Text(widget.countryName)),
+          Padding(padding: EdgeInsets.all(20), child: Text(widget.countryName.toUpperCase(), style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),)),
         ],
       ),
     );
