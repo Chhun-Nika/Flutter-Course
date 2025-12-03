@@ -30,7 +30,7 @@ class QuestionWidget extends StatelessWidget {
             style: TextStyle(fontSize: 26, color: Colors.white),
             children: [
             TextSpan(text: question.title),
-            TextSpan(text: " (${question.score} points)", style: TextStyle(color: Color.fromARGB(255, 135, 61, 61), fontWeight: FontWeight.bold))
+            TextSpan(text: " (${question.score} points)", style: TextStyle(color: Color.fromARGB(255, 39, 47, 204), fontWeight: FontWeight.bold))
           ])),
           const SizedBox(height: 70),
           Column(
