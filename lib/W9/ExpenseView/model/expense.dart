@@ -1,10 +1,8 @@
 
-import 'package:flutter/src/material/dropdown.dart';
+
 import 'package:uuid/uuid.dart';
 
-enum ExpenseType { food, travel, leisure, work;
-
-  static List<DropdownMenuItem<Object>>? map(DropdownMenuItem<ExpenseType> Function(ExpenseType category) param0) {} }
+enum ExpenseType { food, travel, leisure, work }
 
 
 var uuid = Uuid();
