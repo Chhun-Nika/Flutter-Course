@@ -53,7 +53,7 @@ class ResultWidget extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         Column(
           children: [
             ...question.choices.map(
@@ -63,7 +63,7 @@ class ResultWidget extends StatelessWidget {
                     children: [
                       Icon(getIcon(c)),
                       Padding(
-                        padding: EdgeInsets.all(6),
+                        padding: EdgeInsets.all(5),
                         child: Text(
                           c,
                           style: TextStyle(

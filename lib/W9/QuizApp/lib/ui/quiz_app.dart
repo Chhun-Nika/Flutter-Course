@@ -2,7 +2,6 @@ import 'package:example/W9/QuizApp/lib/model/quiz.dart';
 import 'package:example/W9/QuizApp/lib/ui/screens/question_screen.dart';
 import 'package:example/W9/QuizApp/lib/ui/screens/result_screen.dart';
 import 'package:example/W9/QuizApp/lib/ui/screens/start_screen.dart';
-import 'package:example/W9/QuizApp/lib/ui/widgets/question_widget.dart';
 import 'package:flutter/material.dart';
  
 enum ScreenType {startScreen, resultScreen, questionScreen}
@@ -42,7 +41,8 @@ class _QuizAppState extends State<QuizApp> {
       home: Scaffold(
         backgroundColor: Color(0xFF2196F3),
         body: Container(
-          padding: EdgeInsets.all(40),
+          // padding: EdgeInsets.all(40),
+          // margin: EdgeInsets.all(40),
           // child: Column(
           //   mainAxisAlignment: MainAxisAlignment.center,
           //   children: [

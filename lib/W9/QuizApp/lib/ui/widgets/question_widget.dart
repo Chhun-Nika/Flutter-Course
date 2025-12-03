@@ -16,15 +16,22 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      padding: EdgeInsets.all(40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            question.title,
-            style: TextStyle(fontSize: 30, color: Colors.white),
-          ),
+          // Text(
+          //   "${question.title} (${question.score} points)",
+          //   style: TextStyle(fontSize: 26, color: Colors.white),
+          // ),
+          RichText(text: TextSpan(
+            style: TextStyle(fontSize: 26, color: Colors.white),
+            children: [
+            TextSpan(text: question.title),
+            TextSpan(text: " (${question.score} points)", style: TextStyle(color: Color.fromARGB(255, 135, 61, 61), fontWeight: FontWeight.bold))
+          ])),
           const SizedBox(height: 70),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

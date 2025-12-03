@@ -7,15 +7,37 @@
 //   final String fileName;
 //   QuizRepository({required this.fileName});
 
-//   Quiz readQuiz() {
-//     // final file = File(filePath);
-//     Future<File> getLocalFile() async {
-//       final directory = await getApplicationDocumentsDirectory();
+//   Future<File> getLocalFile() async {
+//     final directory = await getApplicationDocumentsDirectory();
+//     final file = File('${directory.path}/$fileName');
+//     return file;
+//   }
 
+//   // Quiz readQuiz() {
+//   //   // final file = File(filePath);
 
-//     }
+//   //   final content = file.readAsStringSync();
+//   //   Map<String, dynamic> quizJson = jsonDecode(content);
+
+//   //   var questionsJson = quizJson['questions'] as List;
+//   //   var questions = questionsJson.map((q) {
+//   //     return Question(
+//   //       title: q['title'],
+//   //       choices: List<String>.from(q['choices']),
+//   //       corrrectAnswer: q['correctAnswer'],
+//   //     );
+//   //   }).toList();
+
+//   //   var submissionsJson = quizJson['submissions'] as List;
+//   //   var submissions = submissionsJson.map((s) {
+//   //     return Submission(submissionId: s['submissionId'], answers: s['answers']);
+//   //   }).toList();
+//   //   return Quiz(questions: questions, submissions: submissions);
+//   // }
+//   Future<Quiz> readQuiz () async {
+//     final file = await getLocalFile();
 //     final content = file.readAsStringSync();
-//     Map<String, dynamic> quizJson = jsonDecode(content);
+//     final quizJson = jsonDecode(content);
 
 //     var questionsJson = quizJson['questions'] as List;
 //     var questions = questionsJson.map((q) {
@@ -28,10 +50,8 @@
 
 //     var submissionsJson = quizJson['submissions'] as List;
 //     var submissions = submissionsJson.map((s) {
-//       return Submission(
-//         submissionId: s['submissionId'],
-//         answers: s['answers']
-//       );
+
+//       return Submission(submissionId: s['submissionId'], answers: List<Answer>.from(s['answers']));
 //     }).toList();
 //     return Quiz(questions: questions, submissions: submissions);
 
@@ -66,7 +86,7 @@
 //   // Map<String, dynamic> submissionToJson(Quiz quiz) {
 //   //   return {
 //   //     "submissions": quiz.submissions.map((s) {
-//   //       var answersJson = 
+//   //       var answersJson =
 //   //     }).toList(),
 //   //   };
 //   // }

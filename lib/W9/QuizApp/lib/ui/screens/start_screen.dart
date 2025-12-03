@@ -1,5 +1,4 @@
 import 'package:example/W9/QuizApp/lib/ui/widgets/button_widget.dart';
-import 'package:example/W9/QuizApp/lib/ui/widgets/question_widget.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
