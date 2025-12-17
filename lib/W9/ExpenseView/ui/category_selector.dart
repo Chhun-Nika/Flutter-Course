@@ -10,7 +10,7 @@ class CategorySelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("rebuilding category");
+    // print("rebuilding category");
     return DropdownMenu(
       // could not find the normal decoration for the dropdownMenu
       inputDecorationTheme: InputDecorationTheme(
@@ -26,7 +26,7 @@ class CategorySelector extends StatelessWidget {
       dropdownMenuEntries: ExpenseType.values
           .map(
             (category) =>
-                DropdownMenuEntry(value: category, label: category.name),
+                DropdownMenuEntry(value: category, label: category.name.toUpperCase()),
           )
           .toList(),
     );

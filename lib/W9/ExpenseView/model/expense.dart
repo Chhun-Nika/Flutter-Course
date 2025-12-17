@@ -8,7 +8,7 @@ enum ExpenseType { food, travel, leisure, work }
 var uuid = Uuid();
 
 class ExpenseModel {
-  final String id;
+  String id;
   String title;
   double amount;
   DateTime date;

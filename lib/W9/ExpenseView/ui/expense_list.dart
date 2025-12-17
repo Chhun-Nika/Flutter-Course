@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:example/W9/ExpenseView/model/expense.dart';
 import 'package:example/W9/ExpenseView/ui/expense_card.dart';
 import 'package:example/W9/ExpenseView/ui/expense_form.dart';
@@ -13,32 +15,6 @@ class ExpenseView extends StatefulWidget {
 }
 
 class _ExpenseViewState extends State<ExpenseView> {
-  // final List<ExpenseModel> _expenses = [
-  //   ExpenseModel(
-  //     title: "Pizza",
-  //     amount: 10,
-  //     date: DateTime.now(),
-  //     category: ExpenseType.food,
-  //   ),
-  //   ExpenseModel(
-  //     title: "Notebook",
-  //     amount: 2.5,
-  //     date: DateTime.now(),
-  //     category: ExpenseType.work,
-  //   ),
-  //   ExpenseModel(
-  //     title: "Spa",
-  //     amount: 12.5,
-  //     date: DateTime.now(),
-  //     category: ExpenseType.leisure,
-  //   ),
-  //   ExpenseModel(
-  //     title: "Plane Ticket",
-  //     amount: 12.5,
-  //     date: DateTime.now(),
-  //     category: ExpenseType.travel,
-  //   ),
-  // ];
   void onClick(BuildContext context) async {
     ExpenseModel? newExpense = await showModalBottomSheet<ExpenseModel>(
       // isScrollControlled: true,
@@ -56,9 +32,56 @@ class _ExpenseViewState extends State<ExpenseView> {
 
   @override
   Widget build(BuildContext context) {
-    // return ListView(
-    //   children: [..._expenses.map((e) => ExpenseCard(expense: e))],
-    // );
+    Widget? content = const Center(child: Text("No expense added yet."));
+    if (widget.expenses.isNotEmpty) {
+      content = Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            ExpensesStatistics(expenses: widget.expenses),
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.expenses.length,
+                itemBuilder: (contex, index) {
+                  final expense = widget.expenses[index];
+                  return Dismissible(
+                    key: Key(expense.id),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      setState(() {
+                        widget.expenses.removeAt(index);
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: Duration(seconds: 3),
+                          content: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Expense Deleted"),
+                              TextButton(
+                                onPressed: () => {
+                                  setState(() {
+                                    widget.expenses.insert(index, expense);
+                                  }),
+                                },
+                                child: Text(
+                                  "UNDO",
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    child: ExpenseCard(expense: expense),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text("Expense View", style: TextStyle(color: Colors.white)),
@@ -75,27 +98,7 @@ class _ExpenseViewState extends State<ExpenseView> {
           ),
         ],
       ),
-      // body: Container(
-      //   padding: EdgeInsets.all(20),
-      //   child: ListView.builder(
-      //     itemCount: _expenses.length,
-      //     itemBuilder: (contex, index) =>
-      //         ExpenseCard(expense: _expenses[index]),
-      //   ),
-      // ),
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            ExpensesStatistics(expenses: widget.expenses,),
-            Expanded(child: ListView.builder(
-              itemCount: widget.expenses.length,
-              itemBuilder: (contex, index) =>
-                  ExpenseCard(expense: widget.expenses[index]),
-            ),)
-          ],
-        ),
-      ),
+      body: content,
       backgroundColor: Color(0xFFBBDEFB),
     );
   }
