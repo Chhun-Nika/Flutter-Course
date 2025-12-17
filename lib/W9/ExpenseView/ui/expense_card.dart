@@ -11,18 +11,18 @@ class ExpenseCard extends StatelessWidget {
     return formattedDate.toString();
   }
 
-  IconData getIcon (ExpenseType category) {
-    switch (category) {
-      case ExpenseType.food:
-        return Icons.ramen_dining;
-      case ExpenseType.leisure:
-        return Icons.kayaking;
-      case ExpenseType.travel:
-        return Icons.airplane_ticket_rounded;
-      case ExpenseType.work:
-        return Icons.business_center_rounded;
-    }
-  }
+  // IconData getIcon (ExpenseType category) {
+  //   switch (category) {
+  //     case ExpenseType.food:
+  //       return Icons.ramen_dining;
+  //     case ExpenseType.leisure:
+  //       return Icons.kayaking;
+  //     case ExpenseType.travel:
+  //       return Icons.airplane_ticket_rounded;
+  //     case ExpenseType.work:
+  //       return Icons.business_center_rounded;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class ExpenseCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(getIcon(expense.category)),
+              Icon(ExpenseModel.getIcon(expense.category)),
               const SizedBox(width: 6,),
               Text(formattedDate(expense.date))]),
         ],

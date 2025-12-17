@@ -11,13 +11,9 @@ void main() {
       home: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextButton(
-            onPressed: onPress,
-            child: const Text(
-              "Press me",
-              style: TextStyle(fontSize: 50),
-            ),
-          )
+          Text("Hello"),
+          SizedBox.shrink(),
+          Expanded(child: Container(height: 200, color: Colors.amber,))
         ],
       ),
     ),
