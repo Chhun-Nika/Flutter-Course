@@ -1,3 +1,4 @@
+import 'package:example/W12/grocery_app/ui/groceries/grocery_form.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/mock_grocery_repository.dart';
@@ -11,8 +12,17 @@ class GroceryList extends StatefulWidget {
 }
 
 class _GroceryListState extends State<GroceryList> {
-  void onCreate() {
-    // TODO-4 - Navigate to the form screen using the Navigator push
+  void onCreate() async {
+    final newGrocery = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => NewItem()),
+    );
+
+    if (newGrocery != null) {
+      setState(() {
+        dummyGroceryItems.add(newGrocery);
+      });
+    }
   }
 
   @override
@@ -33,7 +43,7 @@ class _GroceryListState extends State<GroceryList> {
       appBar: AppBar(
         centerTitle: false,
         title: const Text('Your Groceries'),
-        actions: [IconButton(onPressed: () => {}, icon: const Icon(Icons.add))],
+        actions: [IconButton(onPressed: onCreate, icon: const Icon(Icons.add))],
       ),
       body: content,
     );
@@ -57,7 +67,10 @@ class GroceryTile extends StatelessWidget {
         decoration: BoxDecoration(color: grocery.category.color),
       ),
       title: Text(grocery.name),
-      trailing: Text(grocery.quantity.toString(), style: TextStyle(fontSize: 15),),
+      trailing: Text(
+        grocery.quantity.toString(),
+        style: TextStyle(fontSize: 15),
+      ),
     );
   }
 }
